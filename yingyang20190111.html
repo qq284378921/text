@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <style>
+        body{
+            background-color: grey;
+        }
+        #yinyang{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 50%,rgba(0,0,0,1) 50%);
+            position: relative;
+            /* 动画时间 */
+            animation-duration: 4s;
+            /* 动画名字 */
+            animation-name:spin;
+            /* 循环次数 infinite为无限循环 */
+            animation-iteration-count: infinite;
+            /* 转速   linear：线性匀速 */
+            animation-timing-function: linear;
+        }
+        /* 文本划过窗口动画 */
+        @keyframes spin{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg)
+            }
+        }
+        #yinyang:before{
+            content:'';
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            border: 40px solid black;
+        }
+      
+        #yinyang:after{
+            content:'';
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #000;
+            position: absolute;
+            top: 50px;
+            right:0;
+            border: 40px solid #fff;
+        }
+        /*  */
+        
+    </style>
+    </head>
+    <body>
+        <div id="yinyang"></div>
+    </body>
+</html>

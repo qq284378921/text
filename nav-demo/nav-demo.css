@@ -2,9 +2,36 @@
     margin: 0;
     padding: 0;
 }
+header{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 20px;
+}
+kbd > button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: none;
+    font-size:5px;
+} 
+.wrapper{
+    text-align: center;
+}
 kbd{
+    border: 1px solid red;
     text-transform: uppercase;
     display: inline-block;
-    width: 2em;
-    height: 2em;
+    width: 4em;
+    height: 4em;
+    line-height: 4em;
+    margin: 3px;
+    position: relative;
+}
+kbd:hover > button{
+    display: inline-block;
+}
+.background{
+    background: rgb(112, 107, 107);
+    height: 500px;
+    vertical-align: center;
 }

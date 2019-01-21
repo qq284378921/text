@@ -9,19 +9,19 @@
 </head>
 <body>
    <header>键盘快捷键</header>
-   <main id="main1">
-       <div class="wrapper"></div>
+   <main >
+      <div class="background"> <div class="wrapper" id="main1"></div></div>
    </main>
    <footer></footer>
    
 <script>
-    var keys = {
+    keys = {
            '0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
            '1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
            '2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
            length:3
     }
-    var hash = {
+    hash = {
         'q': 'qq.com',
         'w': 'weibo.com',
         'e': 'ele.me',
@@ -29,12 +29,40 @@
         'b': 'baidu.com',
         length:5
     }
+    // 取出 localStorage 中的 history 对应的 hash
+    hashInLocalStorage = JSON.parse(localStorage.getItem('history') || '')
+    if(hashInLocalStorage){
+        hash = hashInLocalStorage
+    }
+
     index = 0
-    while(index< keys[length]){
+    while(index < keys.length){
         div1 = document.createElement('div')
-        div2.appendchild = div1
-        kbd1 = document.createElement('kbd')
-        div1.appendchild = kbd1
+        main1.appendChild(div1)
+        // console.log(keys[index].length)
+        index2 = 0
+        while(index2 < keys[index].length){
+            kbd1 = document.createElement('kbd')
+            kbd1.textContent = keys[index][index2]
+            button1 = document.createElement('button')
+            button1.textContent = '改键'
+            button1.id = keys[index][index2]
+            button1.onclick = function(onclickButton){
+                // console.log(onclickButton.target.id)
+                hash[onclickButton.target.id] = prompt('请输入需要更改的网站')
+                localStorage.setItem('history',JSON.stringify(hash))
+            }
+            kbd1.appendChild(button1)
+            div1.appendChild(kbd1)
+            index2 = index2 + 1
+        }
+        index = index + 1
+    }
+    //onkeypress表示按下一个键位
+    document.onkeypress = function(keyInput){
+        // console.log(keyInput.key)
+        // location.href = 'http://'+hash[keyInput.key]
+        window.open('http://'+hash[keyInput.key])
     }
 </script>
 </body>

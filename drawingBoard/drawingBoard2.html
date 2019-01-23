@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>画板2</title>
+<style>
+    #xxx{
+        background: green;
+        display: block;
+    }
+    #eraser{
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+    #brush{
+        position: absolute;
+        left: 80px;
+        top: 20px;
+    }
+    #red{
+        position: absolute;
+        left: 150px;
+        top: 22px;
+        background: red;
+        width: 20px;
+        height: 20px;
+        border:red;
+        border-radius: 20px;
+    }
+    #yellow{
+        position: absolute;
+        left: 180px;
+        top: 22px;
+        background: yellow;
+        width: 20px;
+        height: 20px;
+        border: yellow;
+        border-radius: 20px;
+    }
+    #black{
+        position: absolute;
+        left: 210px;
+        top: 22px;
+        background:black;
+        width: 20px;
+        height: 20px;
+        border: black;
+        border-radius: 20px;
+    }
+
+</style>
+</head>
+<body>
+    <canvas id="xxx" ></canvas>
+    <button id="eraser">橡皮擦</button>
+    <button id="brush">画笔</button>
+    <!-- <button id="red"></button>
+    <button id="yellow"></button>
+    <button id="black"></button> -->
+<script>
+    //定义一个画笔颜色hash  。。。。。。。。。。。。。。。。。。未完成
+    // var colorArr ={'default':'black', 'eraser':'green', 'red':'red', 'yellow':'yellow', 'black':'black'};
+    // var changeColor = document.getElementsByTagName('button');
+    // changeColor.onclick = function(){
+    //     console.log(1)
+    // }
+    // for(var x in colorArr){
+        
+    // }
+
+    var yyy = document.getElementById('xxx');
+    xxx();
+    window.onresize = function () {
+        xxx()
+    };
+    var context = yyy.getContext('2d');
+
+    // context.strokeStyle = 'yellow';
+    // context.strokeRect(10,10,100,100);
+    // context.fillStyle = 'blue';
+    // context.fillRect(10,10,100,100);
+    
+    // context.clearRect(50,50,10,10);
+    
+    // context.beginPath();
+    // context.moveTo(240,240);
+    // context.lineTo(300,240);
+    // context.lineTo(300,300);
+    // context.fill();
+
+    // context.beginPath();
+    // context.arc(150,150,50,0,Math.PI*2);
+    // context.stroke();  
+
+    //手动绘图定位初始化状态
+    var painting = false;
+    var lastPoint = {x: undefined, y: undefined};
+
+    //橡皮擦和画笔
+    var draw1 = true;
+    eraser.onclick = function () {
+        draw1 = false;
+    }
+    brush.onclick = function () {
+        draw1 = true;
+    }
+
+    //画画
+    yyy.onmousedown = function(aaaaa) {
+        painting = true;
+        var x = aaaaa.clientX;
+        var y = aaaaa.clientY;
+        lastPoint = {"x":x,"y":y};
+        drawCircle(x,y,1,draw1);  //drawCircle(float cx, float cy, float radius,Paint paint)： 绘制圆，参数一是中心点的x轴，参数二是中心点的y轴，参数三是半径，参数四是paint对象；
+    }
+    yyy.onmousemove =function (aaaaa) {
+        if(painting){
+            var x = aaaaa.clientX;
+            var y = aaaaa.clientY;
+            var newPoint = {"x":x,"y":y};
+            drawCircle(x,y,1,draw1);
+            drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y,draw1);
+            lastPoint = newPoint;
+        }
+    }
+    yyy.onmouseup = function (aaaaa) {
+        painting = false;
+    }
+
+    function xxx(){              //获取界面宽高并赋值
+        var pageWidth = document.documentElement.clientWidth;
+        var pageHeight = document.documentElement.clientHeight;
+        yyy.width = pageWidth;
+        yyy.height = pageHeight;
+    }
+
+    function drawCircle(x,y,radius,draw1) {
+        context.beginPath();
+        if(draw1 == true){
+            context.fillStyle = 'black';
+        }else{
+            context.fillStyle = 'green';
+        }
+        context.arc(x,y,radius,0,Math.PI*2); // context.arc(x,y,r,起始角,结束角,顺逆时针（ture、false可选）)
+        context.fill();
+    }
+    function drawLine(x1,y1,x2,y2,draw1) {
+        context.beginPath();
+        if(draw1  == true){
+            context.strokeStyle = 'black';
+        }else{
+            context.strokeStyle = 'green';
+        }
+        context.lineWidth = 5;
+        context.moveTo(x1,y1);
+        context.lineTo(x2,y2);
+        context.stroke();
+        context.closePath();
+    }
+    
+</script>
+</body>
+</html>

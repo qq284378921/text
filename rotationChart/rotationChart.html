@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.3.1.js"></script>
+    <title>Document</title>
+    <style>
+        .window{
+            width: 300px;
+            overflow: hidden;
+            height: 180px;
+        }
+        .images{
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.5s;
+        }
+    </style>
+</head>
+<body style="display:fled ">
+    <div class="window">
+        <div id="images" class="images">
+            <img src="https://p.nanrenwo.net/uploads/allimg/161104/8122-161104110457-51.jpg" width=300 alt="">
+            <img src="https://p.nanrenwo.net/uploads/allimg/161220/8468-161220111I3-50.jpg" width=300 alt="">
+            <img src="https://p.nanrenwo.net/uploads/allimg/161104/8122-161104110456-50.jpg" width=300 alt="">
+        </div>
+    </div>
+    <span id="buttons">
+        <button >第1张</button>
+        <button >第2张</button>
+        <button >第3张</button>
+    </span>
+        
+    <script>
+        var allButtons = $('#buttons > button')
+        for(let i=0;i<allButtons.length;i++){
+            $(allButtons).on('click', function(x){
+                var index = $(x.currentTarget).index()
+                var n = index * -300
+                $('#images').css({
+                    transform: 'translate('+ n +'px)'
+                })
+            })
+        }
+
+        // var x = 0;
+        // setInterval(()=>{
+        //     x += 1
+        //     allButtons.eq(x%allButtons.length).trigger('click')
+        // },1000)
+       
+    </script>
+</body>
+</html>

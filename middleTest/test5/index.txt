@@ -1,0 +1,15 @@
+call、apply、bind 的用法分别是什么？
+1、call的用处是用来调用一个函数，例：.call(undefined, p1, p2) 
+2、apply的用处也是用来调用一个函数，和call类似，不过它的第二个参数为一个数组，例：.apply(undefined,[p1,p2])
+3、bind()的使用会生成一个新的函数，并不会直接调用它，如需要调用还要另外执行。
+例：
+var m = {   
+    "x" : 1
+};
+function foo(y) {
+    alert(this.x + y);
+}
+var foo1 = foo.bind(m, 5);
+var foo2 = foo.bind(m)
+foo1(10); //6
+foo2(10); //11

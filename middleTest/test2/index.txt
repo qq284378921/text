@@ -1,0 +1,23 @@
+2016年腾讯前端面试题：
+移动端是怎么做适配的？
+回答要点：
+答：
+1、meta viewport
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+viewport：是用户网页的可视区域。       width、height:可以设置宽高（device-width为设备宽度）。       initial-scale：缩放比例
+maximum-scale、minimum-scale：允许用户缩放到的最大、小比例。     user-scalable：用户是否可以手动缩放。
+
+2、媒体查询
+<style>
+    @media (max-width:800px){
+        /* 满足上面条件时会应用此处样式 */
+    }
+</style>
+
+3、动态 rem 方案
+
+<script>
+     var pageWidth = window.innerWidth
+     document.write('<style>html{font-size:'+pageWidth+'px;}</style>')
+ </script>
+// 可以根据需要 1 rem = window.innerWidth ／ 10；（除以 100 的话字体太小了，超过了 chrome 最小的字体大小 12 px，不起作用）

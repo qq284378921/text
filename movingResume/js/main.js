@@ -26,37 +26,46 @@ html{
     color: #DD4A68;
 }
 /* 好了，不玩了，开始自我介绍啦！ */`
-var n = 0
-var id = setInterval(()=>{
-    n += 1
-    code.innerHTML = result.slice(0, n)
-    code.innerHTML = Prism.highlight(code.innerHTML, Prism.languages.css)
-    styleTag.innerHTML = result.slice(0,n)
-    if(n >= result.length){
-        window.clearInterval(id)
-        fn2()
-        fn3(result)
-    }
 
-},10)
-function fn2(){
-    var paper = document.createElement('div')
-    paper.id = 'papaer'
-    document.body.appendChild(paper)
-}
-function fn3(preResult){
-    var result = `
+var result2 = `
     #paper{
         width: 100px;
         height: 100px;
         background: yellow;
     }`
+
+function writeCode(code){
+    let domCode = document.getElementById('preCode')
+    let n = 0
+    let id = setInterval(()=>{
+        n += 1
+        domCode.innerHTML = Prism.highlight(code.slice(0,n), Prism.languages.css)
+        styleTag.innerHTML = code.slice(0,n)
+        domCode.scrollTop = 10000;
+        if(n > code.length){
+            window.clearInterval(id)
+        }
+    },10)
+}
+writeCode(result)
+
+
+function fn2(){
+    var paper = document.createElement('div')
+    paper.id = 'paper'
+    document.body.appendChild(paper)
+}
+
+function fn3(preResult){
+    
     var n = 0
     var id = setInterval(()=>{
         n += 1
         code.innerHTML = preResult+ result.slice(0,n)
         code.innerHTML = Prism.highlight(code.innerHTML, Prism.languages.css)
+        console.log(0)
         styleTag.innerHTML = preResult + result.slice(0,n)
+        console.log(styleTag.innerHTML)
         if(n >= result.length){
             window.clearInterval(id)
         }

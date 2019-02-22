@@ -1,3 +1,10 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
 .token.selctor{
     color: black;
 }
@@ -6,4 +13,8 @@
 }
 .token.function{
     color: black;
+}
+#preCode{
+    height: 100vh;
+    overflow: hidden;
 }

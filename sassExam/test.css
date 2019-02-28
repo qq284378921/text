@@ -1,0 +1,8 @@
+.test {
+  height: 100px;
+  width: 100px;
+  background: green; }
+  .test .test1 {
+    height: 50px;
+    width: 50px;
+    background: red; }

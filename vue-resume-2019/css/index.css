@@ -1,0 +1,82 @@
+*,*::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 14px;
+}
+button{
+    font:inherit;
+}
+a{
+    text-decoration: none; 
+    color: inherit;
+}
+ul,ol{
+    list-style: none;
+}
+h1,h2{
+    text-align: center;    
+}
+@media (min-width: 500px){
+    .page{
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    }
+}
+.page > aside{
+    width:100px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    flex-shrink: 0;
+}
+.page > aside > .upper{
+    display: flex;
+    flex-direction: column;
+}
+.button{
+    padding: 3px;
+    margin: 10px;
+}
+.page > main{
+   flex-grow: 1;
+}
+.main{
+    overflow: auto;
+}
+.resume{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.resume > section > p,.resume > section > h2,.resume > section > ol{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px；
+}
+.resume > section > dl{
+    float: left;
+    width: 45%;
+    margin: 20px;
+    padding: 7px;
+    border: 1px solid #ddd;
+}
+.resume > section > ol{
+    border: 1px solid #ddd;
+    overflow: hidden;
+    padding: 5px;
+}
+.resume > section > ol > li > .name,.resume > section > ol > li > .link{
+    float: left;
+    margin-bottom: 10px;
+}
+.resume > section > ol > li > .link{
+    margin-left: 5px;
+}
+.resume > section > ol > li > .keywords{
+    float: right;
+}
+.resume > section > ol > li > .decription{
+    float: left;
+}

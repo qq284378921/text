@@ -1,0 +1,41 @@
+.main{
+    overflow: auto;
+}
+.resume{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.resume > .profile{
+    text-align: center;
+    padding-top: 20px;
+}
+.resume > section > p,.resume > section > h2,.resume > section > ol{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px；
+}
+.resume > section > dl{
+    float: left;
+    width: 45%;
+    margin: 20px;
+    padding: 7px;
+    border: 1px solid #ddd;
+}
+.resume > section > ol{
+    border: 1px solid #ddd;
+    overflow: hidden;
+    padding: 5px;
+}
+.resume > section > ol > li > .name,.resume > section > ol > li > .link{
+    float: left;
+    margin-bottom: 10px;
+}
+.resume > section > ol > li > .link{
+    margin-left: 5px;
+}
+.resume > section > ol > li > .keywords{
+    float: right;
+}
+.resume > section > ol > li > .decription{
+    float: left;
+}

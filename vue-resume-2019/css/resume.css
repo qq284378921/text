@@ -11,8 +11,6 @@
 }
 .resume > section > p,.resume > section > h2,.resume > section > ol{
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px；
 }
 .resume > section > dl{
     float: left;
@@ -38,4 +36,18 @@
 }
 .resume > section > ol > li > .decription{
     float: left;
+}
+.editableSpan{
+    position: relative;
+    top: 50%;
+}
+.editableSpan button{
+    display:none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    z-index: 1;
+}
+.editableSpan:hover button{
+    display: inline-block;
 }

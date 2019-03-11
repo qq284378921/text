@@ -13,7 +13,7 @@
         <aside>
             <div class="upper">
                 <ul>
-                    <li><button class="button">保存</button></li>
+                    <li><button class="button" @click="save">保存</button></li>
                     <li><button class="button">预览</button></li>
                     <li><button class="button">分享</button></li>
                     <li><button class="button">打印</button></li>
@@ -27,26 +27,21 @@
             <div class="resume">
                 <section class="profile">
                     <h1>
-                        {{modelValue}}
-                        <input type="text" v-model="modelValue">
-                        <editable-span v-bind:value="resume.name"></editable-span>
-                        <button @click="addOne">添加</button>
-                        <button @click="subtractOne">减一</button>
+                        <editable-span :value="resume.name" @edit="onEdit('name',$event)"></editable-span>
                     </h1>
-                    <ul>
-                        <li v-for="i,index in todoList">
-                            {{index}}
-                            做啥：{{i.name}}
-                            <br>
-                            时间：{{i.time}}
-                        </li>
-                    </ul> 
                     <p>
-                        {{resume.birthday}} | {{resume.gender}} | {{resume.jobTitle}} | {{resume.email}} | {{resume.phoneNumber}}
+                        <editable-span :value="resume.birthday" @edit="onEdit('birthday',$event)"></editable-span> 
+                        |
+                        <editable-span :value="resume.gender" @edit="onEdit('gender',$event)"></editable-span> 
+                        |
+                        <editable-span :value="resume.email" @edit="onEdit('email',$event)"></editable-span>
+                        | 
+                        <editable-span :value="resume.phone" @edit="onEdit('phone',$event)"></editable-span> 
+                        <br>
+                        应聘职位：<editable-span :value="resume.jobTitle" @edit="onEdit('jobTitle',$event)"></editable-span>
+                        
                     </p>
-                    <p>
-                        Html | CSS | JavaScript | vue
-                        </p>
+                   
                 </section>
                 <section>
                     <h2>技能</h2>
@@ -113,9 +108,11 @@
             </div>
         </main>
     </div>
-<!-- <script src="vendors/av-min.js"></script> -->
-<!-- <script src="js/av.js"></script> -->
+<script src="vendors/av-min.js"></script>
+<script src="js/av.js"></script>
 <script src="vendors/vue.min.js"></script>
-<script src="js/index.js"></script>
+<script src="js/editable-span.js"></script>
+<script src="js/app.js"></script>
+
 </body>
 </html>

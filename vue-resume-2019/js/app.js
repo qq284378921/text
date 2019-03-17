@@ -15,15 +15,9 @@ var app = new Vue({
     onEdit(key,value){
       this.resume[key] = value
    },
-   save(){
-      let User = AV.Object.extend('User')
-      let user = new User()
-      user.set('resume',this.resume)
-      // user.set('priority',1)
-      user.save().then(function (todo) {
-        console.log('objectId is ' + todo.id);
-      }, function (error) {
-        console.error(error);
+   onClickSave(){
+
+
     });
    }
   }

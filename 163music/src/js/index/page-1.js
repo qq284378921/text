@@ -12,12 +12,14 @@
     }
   }
   let model = {}
-  let controller = {
+  let controller = { 
     init(view, model){
       this.view = view
       this.view.init()
       this.model = model
       this.bindEventHub()
+      this.loadMudule1()
+      this.loadMudule2()
     },
     bindEventHub(){
       window.eventHub.on('selectTab',(tabName)=>{
@@ -27,6 +29,18 @@
           this.view.hide()
         }
       })
+    },
+    loadMudule1(){
+      let script1 = document.createElement('script')
+      script1.src = './js/index/page-1-1.js'
+      document.body.appendChild(script1)
+      // console.log(1)
+    },
+    loadMudule2(){   
+      let script2 = document.createElement('script')
+      script2.src = './js/index/page-1-2.js'
+      document.body.appendChild(script2)
+      // console.log(2)
     }
   }
   controller.init(view, model)

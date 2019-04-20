@@ -15,7 +15,6 @@
             <div class="songList-container"></div>
         </aside>
         <main>
-            
         </main>
     </div>
 
@@ -35,6 +34,26 @@
         appId: APP_ID,
         appKey: APP_KEY
         });
+    
+
+        function uploading(){
+            console.log(1);
+            
+            var TestObject = AV.Object.extend('Song');
+            var testObject = new TestObject();
+            testObject.save({
+            songName: $('#songName').attr('value'),
+            singer: $('#singer').attr('value'),
+            url: $('#songLink').attr('value')
+            }).then(function(object) {
+                alert('上传成功');
+                })
+        }
+        
+        
+
+
+
     </script>
 </body>
 </html>

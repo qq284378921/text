@@ -62,9 +62,11 @@ section.topbar > a::after{
 }
 
 /* tabsNav */
+.globalTabs{
+  border-bottom: 1px solid #ddd;
+}
 .tabsNav{
   display: flex;
-  border-bottom: 1px solid #CCCCCC;
 }
 .tabsNav > li{
   width: 33.3%;
@@ -75,16 +77,28 @@ section.topbar > a::after{
   align-items: center;
   font-size: 16px;
 }
-.tabsNav >li> .content{
+.tabsNav > li > .content{
   padding: 10px 5px;
   position: relative;
   top: 1px;
 }
-.tabsNav >li.active > .content{
-  border-bottom: 1.5px solid #D43C33;
+.tabsNav > li.active > .content::after{
+  content: '';
+  position: absolute;
+  height: 2px;
+  background: #D43C33;
+  bottom: 1px;
+  left: 0;
+  width: 100%;
 }
 .main{
   padding-top: 105px;
+}
+.main > li{
+  display: none;
+}
+.main > li.active{
+  display: block;
 }
 ol > li > h2{
   border-left: 2px solid #D43C33;

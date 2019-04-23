@@ -25,6 +25,9 @@ body{
 input{
     font: inherit;
 }
+.active{
+    background: #d4d4d4;
+}
 
 /* layout */
 .page{
@@ -40,6 +43,10 @@ input{
     padding-left: 10px;
 }
 .newSong{
+    text-align: center;
+    padding: 10px;
+}
+.newSong.active{
     text-align: center;
     padding: 10px;
 }

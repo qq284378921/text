@@ -4,16 +4,14 @@
         template: `
             <ul class="songList">   
             </ul>
-        <div>
-            <button>上传</button>
-        </div>
+        
         `,
         render(data) {
             let $el = $(this.el)
             $el.html(this.template)
             let {songs} = data
             let liList = songs.map((song)=>
-                $('<li></li>').text(song.songName + '-' + song.singer)
+                $('<li></li>').text(song.songName + '-' + song.singer).attr('data-song-id', song.id)
             )
             $el.find('ul').empty()
             liList.map((domLi)=>{
@@ -54,6 +52,17 @@
         bindEvents(){
             $(this.view.el).on('click', 'li',(e)=>{
             this.view.activeItem(e.currentTarget)
+            let songId = e.currentTarget.getAttribute('data-song-id')
+            let data 
+            let songs = this.model.data.songs
+            for(let i=0;i<songs.length;i++){
+                if(songs[i].id === songId){
+                    data = songs[i]
+                    break
+                }
+            }
+            
+            window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
             })
         },
         bindEventHub(){
@@ -63,6 +72,9 @@
             window.eventHub.on('create', (songData)=>{
                 this.model.data.songs.push(songData)
                 this.view.render(this.model.data)
+            })
+            window.eventHub.on('new', ()=>{
+                this.view.clearActive()
             })
         },
         getAllSongs(){

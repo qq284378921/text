@@ -1,6 +1,6 @@
 {
   let view ={
-    el: '.newMusic'
+    el: '.newMusic',
     init(){
       this.$el = $(this.el)
     }
@@ -9,7 +9,7 @@
     data: {
       songs: []
     },
-    
+
   }
   let controller = {
     init(view, model){

@@ -52,6 +52,9 @@ input{
     padding: 10px;
     margin-left: 10px;
 }
+.songList > li.active{
+    background: #ddd;
+}
 
 /* main */
 
@@ -73,7 +76,7 @@ input{
 .form input[type=text]{
     padding: 3px 8px;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #d4d4d4;
     height: 30px;
 }
 .form input[type=button],

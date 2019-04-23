@@ -3,12 +3,12 @@
         el: '.page > main',
         template: `
         <h1>新建歌单</h1>
-            <form class="form" >
+            <form  class="form" id="myForm">
                 <div class="row">
                     <label>
                         歌名
                     </label>
-                    <input id="songName" type="text"  >
+                    <input id="songName" type="text">
                 </div>
                 <div class="row">
                     <label>
@@ -20,10 +20,10 @@
                     <label>
                         外链
                     </label>
-                    <input id="songLink" type="text">
+                    <input id="url" type="text">
                 </div>
                 <div class="row actions">
-                    <button onclick="console.log(1);uploading()" type="submit" >保存</button>
+                    <button onclick="uploading(event)" type="submit" >提交</button>
                 </div>
             </form>
         `,
@@ -40,4 +40,23 @@
         }
     }
     controller.init(view, model)
+}
+function uploading(e) {
+    e.preventDefault();
+    var songName = $('#songName').val();
+    var singer = $('#singer').val();
+    var url = $('#url').val();
+    if (!songName) { alert('请输入歌名'); return; }
+    if (!singer) { alert('请输入歌手'); return; }
+    if (!url) { alert('请输入外链'); return; }
+
+    var TestObject = AV.Object.extend('Song');
+    var testObject = new TestObject();
+    testObject.save({
+        songName: songName,
+        singer: singer,
+        url: url
+    }).then(function (object) {
+        alert('上传成功');
+    })
 }

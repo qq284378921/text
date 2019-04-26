@@ -53,6 +53,7 @@
             $(this.view.el).on('click', 'li',(e)=>{
             this.view.activeItem(e.currentTarget)
             let songId = e.currentTarget.getAttribute('data-song-id')
+            
             let data 
             let songs = this.model.data.songs
             for(let i=0;i<songs.length;i++){
@@ -62,7 +63,7 @@
                 }
             }
             
-            window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
+            window.eventHub.emit('select', data)
             })
         },
         bindEventHub(){
@@ -75,6 +76,9 @@
             })
             window.eventHub.on('new', ()=>{
                 this.view.clearActive()
+            })
+            window.eventHub.on('uploaded', ()=> {
+                this.getAllSongs()
             })
         },
         getAllSongs(){

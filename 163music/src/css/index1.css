@@ -120,6 +120,35 @@ ol > li > h2{
 .recommendList > .songs > li img{
   width: 100%;
 }
+.newMusic ol > li > h3{
+  font-size: 17px;
+}
+.newMusic ol > li > p{
+  font-size: 12px;
+  color: #888;
+}
+.newMusic ol > li{
+  position: relative;
+  margin-left: 10px;
+  padding-bottom: 6px;
+  padding-top: 5px;
+  border-bottom: 1px solid #E2E2E3;
+}
+.newMusic ol .playButton{
+  position: absolute;
+  right:8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.newMusic ol .icon-play{
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  fill: #AAA;
+}
+.newMusic ol .icon-sq{
+  fill: #FE672E;
+}
 .bottomContent{
   text-align: center;
 }

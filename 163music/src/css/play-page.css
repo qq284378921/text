@@ -1,0 +1,157 @@
+*{margin:0;padding:0;}
+*{box-sizing: border-box;}
+*::after{box-sizing: border-box;}
+*::before{box-sizing: border-box;}
+
+a{color: inherit; text-decoration: none;}
+ul,ol{list-style: none;}
+h1,h2,h3,h4,h5,h6{ font-weight: normal; }
+.icon {
+  width: 1em; 
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+/* background */
+body{
+}
+body::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  background:url(../img/100.jpg) no-repeat center center;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  background-size: cover;
+}
+#wrap{
+  height: 100vh;
+  background-size: cover;
+  background: rgba(0, 0, 0, 0.4)
+}
+
+/* play */
+/* topbar */
+.topbar > svg{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 30px;
+  width: 60px;
+}
+/* playCartoon */
+.playCartoon{
+  position: relative;
+}
+.playCartoon > .icon{
+  width: 10vw; 
+  fill: white;
+}
+.playCartoon > .pointer{
+  position: absolute;
+  left: 45vw;
+  width: 25vw;
+  top: 0;
+  z-index:2;
+}
+.playCartoon > .disc{
+  display: flex; 
+  position: absolute;
+  justify-content: center; 
+  align-items: center;
+  margin-top: 18vw;
+  width: 100%
+}
+.playCartoon > .disc > .icon-button{
+  background:url(//s3.music.126.net/m/s/img/play_btn_3x.png?4da7e135b7c089f3777ec5cdbbb3a8d8) no-repeat;
+  background-size: contain;
+  position: absolute;
+  z-index: 2;
+  height: 10vw;
+  width: 10vw;
+}
+.playCartoon > .disc > .ring{
+  width: 72vw; 
+}
+.playCartoon > .disc > .light{
+  width: 72vw; 
+  position: absolute; 
+}
+.playCartoon > .disc  .cover{
+  width: 44.5vw;  
+  position: absolute; 
+  border-radius: 50%; 
+}
+.light,.cover{
+  animation-play-state: running;
+}
+
+
+/* songInformation */
+.songInfo{
+  color: white;
+  position: relative;
+  top: 95vw;
+  text-align: center;
+}
+.songInfo > .songTitle > h2{
+  font-size: 5vw;
+}
+.songInfo > .lyric{
+  width: 50vw;
+  margin: auto;
+  overflow: hidden;
+  height: 15vw;
+}
+
+.lyric > .moveLyric > p{
+  font-size: 3.7vw;
+}
+
+/* footer-wrap */
+.footer-wrap{
+  position: fixed;
+  bottom: 3vw;
+}
+.footer-wrap > .openApp{
+  margin-left: 2vw;
+  padding: 1vw 19vw;
+  border: 1px #d33a31 solid;
+  border-radius: 50px;
+  color: #d33a31;
+  font-size: 4vw;
+}
+.footer-wrap > .download{
+  background: #d33a31;
+  margin-left: 2vw;
+  padding: 1vw 19vw;
+  border: 1px #d33a31 solid;
+  border-radius: 50px;
+  color: white;
+  font-size: 4vw;
+}
+
+/* 动画 */
+@-webkit-keyframes rotation{
+  0%{-webkit-transform:rotate(0deg);}
+  100%{-webkit-transform:rotate(360deg);}
+}
+@keyframes mymove
+{
+from {top:0px;}
+to {top:200px;}
+}
+.rotation{
+  animation:rotation 15s linear infinite;
+}
+.offRotation{
+  animation-play-state: paused;
+}
+.lyricRotation{
+
+}

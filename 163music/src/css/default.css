@@ -34,9 +34,6 @@ input{
     display: flex;
     height: 100vh;
 }
-.page > aside{
-    width: 200px;
-}
 .page > main{
     flex-grow: 1;
     background: #d4d4d4;

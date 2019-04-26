@@ -1,22 +1,50 @@
 function uploading(e) {
     e.preventDefault();
-    var songName = $('#songName').val();
-    var singer = $('#singer').val();
-    var url = $('#url').val();
+    let songName = $('#songName').val();
+    let singer = $('#singer').val();
+    let url = $('#url').val();
+    let songId = $('.songList > .active').attr('data-song-id');
     if (!songName) { alert('请输入歌名'); return; }
     if (!singer) { alert('请输入歌手'); return; }
     if (!url) { alert('请输入外链'); return; }
 
-    var TestObject = AV.Object.extend('Song');
-    var testObject = new TestObject();
-    testObject.save({
-        songName: songName,
-        singer: singer,
-        url: url
-    }).then(function (object) {
-        alert('上传成功');
-    })
+    if (songId) {
+        var todo = AV.Object.createWithoutData('Song', songId);
+        // 修改属性
+        console.log(songId)
+        todo.set('songName', $('#songName').val());
+        todo.set('singer', $('#singer').val());
+        todo.set('url', $('#url').val());
+        // 保存到云端
+        todo.save().then(()=>{
+            alert('修改成功');
+            location.reload();
+        });
+    } else {
+        var TestObject = AV.Object.extend('Song');
+        var testObject = new TestObject();
+        testObject.save({
+            songName: songName,
+            singer: singer,
+            url: url
+        }).then(function () {
+            window.eventHub.emit('uploaded');//上传成功事件
+            alert('上传成功');
+            location.reload();
+        })
+    }
+
+
 }
+// function updata(data) {
+//     var todo = AV.Object.createWithoutData('Song', songID);
+//     // 修改属性
+//     todo.set('songName',$('#songName').val());
+//     todo.set('singer', $('#singer').val());
+//     todo.set('url', $('#url').val());
+//     // 保存到云端
+//     todo.save();
+// }
 {
     let view = {
         el: '.page > main',
@@ -41,27 +69,27 @@ function uploading(e) {
                     <input id="url" type="text" value="__url__">
                 </div>
                 <div class="row actions">
-                    <button onclick="uploading(event)" type="submit">上传</button>
+                    <button onclick="uploading(event)" type="button">__button__</button>
                 </div>
             </form>
         `,
         render(data) {
             let songsKeyWords = ['songName', 'singer', 'url']
             let html = this.template
-            songsKeyWords.map((string)=> {
+            songsKeyWords.map((string) => {
                 html = html.replace(`__${string}__`, data[string] || '')
                 // console.log(data)
                 // console.log(html)
                 // console.log(songsKeyWords)
             })
-
+            html = html.replace(`__button__`, data['url'] ? '保存' : '上传')
             $(this.el).html(html)
-            if(data.id){
+            if (data.id) {
                 $(this.el).prepend('<h1>编辑歌曲</h1>')
-              }else{
+            } else {
                 $(this.el).prepend('<h1>新建歌曲</h1>')
-              }
-             
+            }
+
         }
 
     }
@@ -84,8 +112,8 @@ function uploading(e) {
                 // console.log(this.model.data)
                 this.view.render(this.model.data)
             })
-            window.eventHub.on('new', ()=>{
-                this.model.data = {songName: '', singer: '', url: ''}
+            window.eventHub.on('new', () => {
+                this.model.data = { songName: '', singer: '', url: '' }
                 this.view.render(this.model.data)
             })
         }

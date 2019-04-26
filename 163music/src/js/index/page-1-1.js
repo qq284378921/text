@@ -1,13 +1,8 @@
 {
   let view ={
-    el: '.recommendList'
+    el: '.recommendList',
   }
   let model = {}
-  let controller = {
-    init(view, model){
-      this.view = view
-      this.view.init()
-      this.model = model
-    }
   }
+  let controller = {
 }

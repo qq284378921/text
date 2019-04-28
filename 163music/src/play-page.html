@@ -13,6 +13,8 @@
 </head>
 
 <body>
+  <div id="backgroundBox">
+  </div>
   <div id="wrap" class="playPage">
     <div class="play">
       <div class="topbar">
@@ -94,7 +96,7 @@
             alt="">
           <img class="light offRotation"
             src="//s3.music.126.net/m/s/img/disc_light-ip6.png?996fc8a2bc62e1ab3f51f135fc459577" alt="">
-          <img class="cover rotation offRotation" src="./img/100.jpg" alt="">
+          <img id="songPicture" class="cover rotation offRotation" alt="">
         </div>
       </div>
       <div class="songInfo">
@@ -102,27 +104,7 @@
           <h2 id="songTitle"></h2>
         </div>
         <div class="lyric">
-          <div class="moveLyric .offRotation">
-            <p>A：我是歌词。</p>
-            <p>B：不，你不是。</p>
-            <p>A：我就是歌词！！！</p>
-            <p>B：行吧，你说是就是吧。</p>
-            <p>A：我是歌词。</p>
-            <p>B：不，你不是。</p>
-            <p>A：我就是歌词！！！</p>
-            <p>B：行吧，你说是就是吧。</p>
-            <p>A：我是歌词。</p>
-            <p>B：不，你不是。</p>
-            <p>A：我就是歌词！！！</p>
-            <p>B：行吧，你说是就是吧。</p>
-            <p>A：我是歌词。</p>
-            <p>B：不，你不是。</p>
-            <p>A：我就是歌词！！！</p>
-            <p>B：行吧，你说是就是吧。</p>
-            <p>A：我是歌词。</p>
-            <p>B：不，你不是。</p>
-            <p>A：我就是歌词！！！</p>
-            <p>B：行吧，你说是就是吧。</p>
+          <div class="moveLyric offRotation" id="lyricBox">
           </div>
         </div>
       </div>
@@ -132,6 +114,7 @@
       <a class="download" href="">下载</a>
     </div>
   </div>
+  <audio src="" id="myaudio" hidden="true" onended="musicEnded()"></audio>
 
   <script src="//at.alicdn.com/t/font_395875_4hwrep7mypx8ncdi.js"></script>
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>

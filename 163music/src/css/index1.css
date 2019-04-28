@@ -17,6 +17,15 @@ body{font:14px/1.5 Helvetica,sans-serif;}
   fill: currentColor;
   overflow: hidden;
 }
+.icon-play{
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  fill: #AAA;
+}
+input:focus{
+  outline:none;
+}
 body{
   font-size: 15px;
   background: white;
@@ -107,6 +116,8 @@ ol > li > h2{
   padding-left: 8px;
   margin: 20px 0 8px;
 }
+
+/* 推荐歌单 */
 .recommendList > .songs{
   display: flex;
   flex-wrap: wrap;
@@ -115,10 +126,12 @@ ol > li > h2{
 }
 .recommendList > .songs > li{
   width: 32.9%;
-  margin: 8px 0;
 }
-.recommendList > .songs > li img{
+.recommendList > .songs img{
   width: 100%;
+}
+.recommendList > .songs p{
+  font-size: 13px;
 }
 .newMusic ol > li > h3{
   font-size: 17px;
@@ -127,6 +140,8 @@ ol > li > h2{
   font-size: 12px;
   color: #888;
 }
+
+/* 最新音乐 */
 .newMusic ol > li{
   position: relative;
   margin-left: 10px;
@@ -140,32 +155,133 @@ ol > li > h2{
   top: 50%;
   transform: translateY(-50%);
 }
-.newMusic ol .icon-play{
-  width: 22px;
-  height: 22px;
-  vertical-align: middle;
-  fill: #AAA;
-}
 .newMusic ol .icon-sq{
   fill: #FE672E;
 }
+
+/* 热歌榜 */
+/* 上半部分 */
+.hotTB{
+  position: relative;
+  padding-top: 38.9%;
+  overflow: hidden;
+  background: url(//s3.music.126.net/m/s/img/hot_music_bg_2x.jpg?f01a252389c26bcf016816242eaa6aee) no-repeat;
+  background-size: contain;
+}
+.hotTB::after{
+  /* 没高度 暂时没解决 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: " ";
+  z-index: 1;
+  background-color: rgba(0,0,0,0.2);
+}
+.hotTB > .hotBox{
+  flex-direction: column;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  position: absolute;
+}
+.hotTB > .hotBox > .hotIcon{
+  background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28…) no-repeat;
+  width: 142px;
+  height: 67px;
+  background-position: -24px -30px;
+  background-size: 166px 97px;
+}
+.hotTB > .hotBox > .hotTime{
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8)
+} 
+/* 榜单部分 */
+.hotSL{
+  position: relative;
+}
+.hotSL > a{
+  display: flex;
+}
+.hotNumber{
+  width: 10%;
+  display: flex;
+  height: 54.4px;
+  align-items: center;
+  justify-content: center;
+}
+.hotNumber > .listNumber{
+  color: #df3436;
+  font-size: 17px;
+}
+.hotInfo{
+  padding-top: 9px;
+  width: 80%;
+  height: 54.4px;
+}
+.hotInfo > .hotIT{
+  font-size: 17px;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.hotInfo > .hotIS{
+  font-size: 12px;
+  color: #888;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.hotInfo > .hotIS > i{
+  background: url(//s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c74880) no-repeat;
+  height: 8px;
+  width: 12px;
+  display: inline-block;
+  margin-right: 4px;
+  background-size: 166px 97px
+}
+.hotBBox{
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 54.4px;
+}
+.moreList{
+  color: #999;
+  padding: 15px;
+  text-align: center;
+}
+/* 搜索 */
+.search{
+
+}
+.inputBox{
+  background: #f2f2f2;
+  border: 0;
+}
+/* 页面底部信息 */
 .bottomContent{
   text-align: center;
+  margin-top: 20px;
+  display: none;
+}
+.bottomContent.active{
+  display: block;
 }
 .bottomContent > .log > svg{
   width: 230px;
   height: 44px;
 }
 .bottomContent > .link-wrapper{
-  padding-top: 5px;
-  padding-bottom: 3px;
+  line-height: 38px;
 }
 .bottomContent > .link-wrapper > a{
+  font-size: 16px;
   display: inline-block;
   color: #D43C33;
-  padding: 10px 80px;
   border-radius: 20px;
   border: 1px solid #D43C33;
+  margin: 15px 37px 5px;
+  padding: 0 30px;
 }
 .bottomContent > .copyright{
   font-size: 12px;

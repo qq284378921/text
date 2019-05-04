@@ -92,10 +92,10 @@ function watch() {
   player.ontimeupdate = () => {
     let playingTime = getPlayingTime()
     for (let lyricTime in lyricList) {
-      if (playingTime + 200 > lyricTime && playingTime - 200 < lyricTime) {
+      if (playingTime + 150 > lyricTime && playingTime - 150 < lyricTime) {
         $(".moveLyric > p").removeClass('light')
         $(".moveLyric > p[data-time='" + lyricTime + "']").addClass('light ')
-        let y = $(".moveLyric > p[data-time='" + lyricTime + "']").position().top - 24.8
+        let y = $(".moveLyric > p[data-time='" + lyricTime + "']").position().top - 30
         $(".moveLyric").css('transform',"translateY(-"+ y +"px)")
       }
     }

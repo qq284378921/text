@@ -38,21 +38,17 @@ h1,h2,h3,h4,h5,h6{ font-weight: normal; }
 .topbar > svg{
   position: absolute;
   top: 5px;
-  left: 5px;
+  left: 10px;
   height: 30px;
-  width: 60px;
+  width: 80px;
 }
 /* playCartoon */
 .playCartoon{
   position: relative;
 }
-.playCartoon > .icon{
-  width: 10vw; 
-  fill: white;
-}
 .playCartoon > .pointer{
   position: absolute;
-  left: 45vw;
+  left: 45%;
   width: 25vw;
   top: 0;
   z-index:2;
@@ -62,26 +58,26 @@ h1,h2,h3,h4,h5,h6{ font-weight: normal; }
   position: absolute;
   justify-content: center; 
   align-items: center;
-  margin-top: 18vw;
-  width: 100%
+  margin-top: 18%;
+  width: 100%;
 }
 .playCartoon > .disc > .icon-button{
   background:url(//s3.music.126.net/m/s/img/play_btn_3x.png?4da7e135b7c089f3777ec5cdbbb3a8d8) no-repeat;
   background-size: contain;
   position: absolute;
   z-index: 2;
-  height: 10vw;
-  width: 10vw;
+  height: 55px;
+  width: 55px;
 }
 .playCartoon > .disc > .ring{
-  width: 72vw; 
+  width: 72%; 
 }
 .playCartoon > .disc > .light{
-  width: 72vw; 
+  width: 72%; 
   position: absolute; 
 }
 .playCartoon > .disc  .cover{
-  width: 44.5vw;  
+  width: 44.5%;  
   position: absolute; 
   border-radius: 50%; 
 }
@@ -98,14 +94,14 @@ h1,h2,h3,h4,h5,h6{ font-weight: normal; }
   text-align: center;
 }
 .songInfo > .songTitle > h2{
-  font-size: 5vw;
-  padding-bottom: 2vw;
+  font-size: 18px;
+  padding-bottom: 8px;
 }
 .songInfo > .lyric{
-  width: 50vw;
+  width: 50%;
   margin: auto;
   overflow: hidden;
-  height: 21vw;
+  height: 90px;
 }
 
 .lyric > .moveLyric{
@@ -113,36 +109,38 @@ h1,h2,h3,h4,h5,h6{ font-weight: normal; }
   position: relative;
 }
 .lyric > .moveLyric > p{
-  line-height: 7vw;
-  font-size: 4.5vw;
+  line-height: 30px;
+  font-size: 16px;
   color: rgba(255,255,255,0.6);
-  transition: all 0.4s;
+  transition: all 0.5s;
 }
 .lyric > .moveLyric > p.light{
-  font-size: 4.5vw;
   color: rgb(255,255,255);
 }
 /* footer-wrap */
 .footer-wrap{
   position: fixed;
-  bottom: 3vw;
+  bottom: 10px;
+  display: flex;
+  width: 100%;
 }
-.footer-wrap > .openApp{
-  margin-left: 2vw;
-  padding: 1vw 19vw;
+.footer-wrap > .openApp, .footer-wrap > .download{
+  width: 50%;
+  padding: 10px 17%;
+  margin: 5px;
   border: 1px #d33a31 solid;
   border-radius: 50px;
+  font-size: 16px;
+  text-align: center;
+  font-family: Helvetica, sans-serif;
+}
+
+.footer-wrap > .openApp{
   color: #d33a31;
-  font-size: 4vw;
 }
 .footer-wrap > .download{
   background: #d33a31;
-  margin-left: 2vw;
-  padding: 1vw 19vw;
-  border: 1px #d33a31 solid;
-  border-radius: 50px;
   color: white;
-  font-size: 4vw;
 }
 
 /* 动画 */

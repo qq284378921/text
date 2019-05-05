@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="nav-demo.css" type="text/css">
+    <title>我的导航</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div class="wrapper" id="main1"></div>
+    </main>
+    <footer></footer>
+    <script>
+        var keys = {
+            '0': { 0: 'q', 1: 'w', 2: 'e', 3: 'r', 4: 't', 5: 'y', 6: 'u', 7: 'i', 8: 'o', 9: 'p', length: 10 },
+            '1': { 0: 'a', 1: 's', 2: 'd', 3: 'f', 4: 'g', 5: 'h', 6: 'j', 7: 'k', 8: 'l', length: 9 },
+            '2': { 0: 'z', 1: 'x', 2: 'c', 3: 'v', 4: 'b', 5: 'n', 6: 'm', length: 7 },
+            length: 3
+        }
+        var hash = {
+            'q': 'www.qq.com',
+            'w': 'www.weibo.com',
+            'e': 'www.ele.me',
+            'r': 'www.ruanyifeng.com',
+            't': 'www.taobao.com',
+            'y': 'www.yy.com',
+            'u': 'uu.163.com',
+            'i': 'www.iqiyi.com',
+            'o': 'www.oppo.com',
+            'p': 'www.pptv.com',
+            'a': 'www.acfun.cn',
+            's': 'www.sina.com.cn',
+            'd': 'www.douyu.com',
+            'f': 'www.fengniao.com',
+            'g': 'www.gov.cn',
+            'h': 'www8.hp.com',
+            'j': 'www.jd.com',
+            'k': 'www.kugou.com',
+            'l': 'www.lofter.com',
+            'z': 'www.zhihu.com',
+            'x': 'www.xiaomi.com',
+            'c': 'www.china.com',
+            'v': 'www.vip.com',
+            'b': 'www.baidu.com',
+            'n': 'www.nba.com',
+            'm': 'www.mi.com',
+            length: 26
+        }
+        init()
+
+        document.onkeypress = keydown
+
+        function init(){
+            localStorage.setItem('history', JSON.stringify(hash))
+        }
+       
+        var hashInLocalStorage = JSON.parse(localStorage.getItem('history') || '')
+        // 取出 localStorage 中的 history 对应的 hash
+        if (hashInLocalStorage) {
+            hash = hashInLocalStorage
+        }
+
+        var index = 0
+        while (index < keys.length) {
+            div1 = document.createElement('div')
+            main1.appendChild(div1)
+            div1.className = 'row'
+            // console.log(keys[index].length)
+            var index2 = 0
+            while (index2 < keys[index].length) {
+                var kbd1 = document.createElement('kbd')
+                kbd1.textContent = keys[index][index2]
+                var button1 = document.createElement('button')
+                button1.textContent = '编辑'
+                button1.id = keys[index][index2]
+                var icon = document.createElement('img')
+                icon.setAttribute("onerror","this.style.display='none'")
+                if(hash[keys[index][index2]]){
+                    icon.src = 'http://' + hash[keys[index][index2]] + '/favicon.ico'
+                }else{
+                    icon.src = 'http://ico.58pic.com/iconset01/ivista-icons/gif/97158.gif'
+                }
+                button1.onclick = function onclickButton(event) {
+                    hash[event.target.id] = prompt('请输入需要更改的网站')
+                    localStorage.setItem('history', JSON.stringify(hash))
+                }
+                kbd1.appendChild(button1)
+                kbd1.appendChild(icon)
+                div1.appendChild(kbd1)
+                index2 = index2 + 1
+            }
+            index = index + 1
+        }
+        //onkeypress表示按下一个键位
+        function keydown(event) {
+            hash[event.key] && window.open('http://' + hash[event.key])
+        }
+    </script>
+</body>
+
+</html>

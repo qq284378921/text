@@ -5,7 +5,7 @@ function getInfo() {
   query.find().then((song) => {
     let i = 0
     song.map((song,i) => {
-      let info = {picture: song.picture, ...song.attributes}
+      let info = {picture: song.attributes.picture, intro: song.attributes.intro, PlayListName: song.attributes.PlayListName}
       insertInfo(info,i)
       i=i+1
     })

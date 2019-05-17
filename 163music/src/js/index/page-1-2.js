@@ -40,7 +40,7 @@
       var query = new AV.Query('Song');
       return query.find().then((songs) => {
         this.data.songs = songs.map((song) => {
-          return { id: song.id, ...song.attributes }
+          return {picture: song.attributes.picture, singer: song.attributes.singer, songName: song.attributes.songName, url: song.attributes.url, id: song.id}
         })
         return songs
       })
